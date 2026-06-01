@@ -1,10 +1,12 @@
-from node:lts-alpine3.23
+FROM node:lts-alpine3.23
 
-ENV MONGO_DB_USERNAME=admin\
+ENV MONGO_DB_USERNAME=admin \
     MONGO_DB_PWD=admin
 
-RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app/backend
 
-COPY  . /usr/src/app
+COPY . /usr/src/app
 
-CMD ["cd", "/usr/src/app/backend", "&&", "npm", "install", "&&", "npm", "start"]
+RUN npm install
+
+CMD ["npm", "start"]
