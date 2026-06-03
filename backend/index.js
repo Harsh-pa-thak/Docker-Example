@@ -124,6 +124,6 @@ app.get("/", (req, res) => {
   res.render("home");
 });
 
-app.listen(8080, () => {
-  console.log(`Server is running at  http://localhost:8080`);
+app.listen(PORT, () => {
+  console.log(`Server is running at  http://localhost:${PORT}`);
 });
