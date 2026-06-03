@@ -23,7 +23,7 @@ passport.use(new LocalStrategy(
       return done(err);
     }
   }
-)); 
+));
 
 configDotenv();
 
@@ -113,7 +113,7 @@ app.get("/user", (req, res) => {
   res.render("afterUser");
 });
 app.get("/session", (req, res) => {
-  if(req.session.user) {
+  if (req.session.user) {
     res.send(`Welcome, ${req.session.user.name}!`);
   } else {
     res.status(401).json({ error: "Not authenticated" });
@@ -121,7 +121,7 @@ app.get("/session", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.render("home");
 });
 
 app.listen(PORT, () => {
