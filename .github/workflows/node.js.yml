@@ -10,8 +10,19 @@ jobs:
     strategy:
       matrix:
         node-version: [22.x]
-    steps:
+
+    steps: 
+    
+    - name: backup .env file 
+      run: |
+        if [ -f .env ]; then mv .env /temp/env_backup; fi
+
+
     - uses: actions/checkout@v4
+    - name: restore .env file 
+      run: |
+        if [ -f /temp/env_backup ]; then mv  /temp/env_backup .env; fi
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
